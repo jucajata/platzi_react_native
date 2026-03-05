@@ -1,12 +1,31 @@
 import { Link } from 'expo-router';
-import { Platform, StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
+import { ejemploDesestructuracionUsuario } from '../../utils/math';
 
 export default function HomeScreen() {
+
+  const nombre = "Juan";
+  const edad = 30;
+  const isPremium = true;
+  const messages = 5;
+  const fecha = new Date();
+  const hora = fecha.getHours();
+  const saludo =
+    hora < 12 ? "Buenos días" :
+      hora < 18 ? "Buenas tardes" :
+        "Buenas noches";
+
   return (
     <View style={styles.container}>
+      <Text>Hola, {nombre}</Text>
+      <Text>En 10 años, {edad + 10}</Text>
+      <Text>{isPremium ? "Usuario premium" : "Usuario gratuito"}</Text>
+      {messages > 0 && <Text>Tienes {messages} mensajes</Text>}
       <Text style={styles.title}>Mi primera app con react native</Text>
       <Text style={styles.subtitle}>Guarda y ves el cambio al instante</Text>
       <Link href="/(tabs)/about">Ir a sobre mi</Link>
+      <Text>{saludo}</Text>
+      <Text>{ejemploDesestructuracionUsuario()}</Text>
     </View>
   );
 }
